@@ -8,7 +8,7 @@ public class Blocks : MonoBehaviour
     public TextMeshPro blockText;
 
     Renderer _renderer;
-    Gradient gradient;
+    Gradient _gradient;
     GradientColorKey[] colorKey;
     GradientAlphaKey[] alphaKey;
 
@@ -19,7 +19,7 @@ public class Blocks : MonoBehaviour
 
         _renderer = GetComponent<Renderer>();
 
-        gradient = new Gradient();
+        _gradient = new Gradient();
         colorKey = new GradientColorKey[2];
         colorKey[0].color = Color.green;
         colorKey[0].time = 0.0f;
@@ -32,8 +32,8 @@ public class Blocks : MonoBehaviour
         alphaKey[1].alpha = 0.0f;
         alphaKey[1].time = 1.0f;
 
-        gradient.SetKeys(colorKey, alphaKey);
-        _renderer.material.color = gradient.Evaluate(_blockPoints / 15f);
+        _gradient.SetKeys(colorKey, alphaKey);
+        _renderer.material.color = _gradient.Evaluate(_blockPoints / 15f);
     }
 
     private void OnTriggerEnter(Collider other)
