@@ -20,8 +20,7 @@ public class Game : MonoBehaviour
        if (CurrentState != State.Playing) return;
         CurrentState = State.Loss;
         Controls.enabled = false;
-        Debug.Log("Game Over");
-        ReloadLevel();
+        Restart(); 
     }
 
     public void OnPlayerReachedFinish()
@@ -30,12 +29,29 @@ public class Game : MonoBehaviour
 
         CurrentState = State.Won;
         Controls.enabled = false;
-        Debug.Log("You Won");
-        ReloadLevel();
+        LevelIndex++;
+        Finish();
     }
 
-    void ReloadLevel()
+    public int LevelIndex
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        get => PlayerPrefs.GetInt(LevelIndexKey, 1);
+        private set
+        {
+            PlayerPrefs.SetInt(LevelIndexKey, value);
+            PlayerPrefs.Save();
+        }
+    }
+
+    private const string LevelIndexKey = "LevelIndex";
+
+    private void Restart()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    private void Finish()
+    {
+        SceneManager.LoadScene(3);
     }
 }
