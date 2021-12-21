@@ -21,6 +21,7 @@ public class SnakeMovement : MonoBehaviour
 
     public Game Game;
     public Sound Sound;
+    public AudioClip SoundCollisionOnBlock;
 
     void Start()
     {
@@ -68,8 +69,12 @@ public class SnakeMovement : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Block")
+        {
             ParticleSystem.Play();
-
+            var audio = GetComponent<AudioSource>();
+            audio.PlayOneShot(SoundCollisionOnBlock);
+        }
+ 
         if (Length == 0)
         {
             Die();

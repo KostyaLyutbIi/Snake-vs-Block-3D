@@ -30,9 +30,22 @@ public class Game : MonoBehaviour
 
         CurrentState = State.Won;
         Controls.enabled = false;
+        LevelIndex++;
         Debug.Log("You Won");
         ReloadLevel();
     }
+
+    public int LevelIndex
+    {
+        get => PlayerPrefs.GetInt(LevelIndexKey, 1);
+        private set
+        {
+            PlayerPrefs.SetInt(LevelIndexKey, value);
+            PlayerPrefs.Save();
+        }
+    }
+
+    private const string LevelIndexKey = "LevelIndex";
 
     void ReloadLevel()
     {
