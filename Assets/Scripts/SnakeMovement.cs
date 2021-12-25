@@ -1,6 +1,6 @@
 using UnityEngine;
 using TMPro;
-using System;
+using UnityEngine.UI;
 
 public class SnakeMovement : MonoBehaviour
 {
@@ -23,7 +23,7 @@ public class SnakeMovement : MonoBehaviour
     public Game Game;
     public Sound Sound;
     public AudioClip SoundCollisionOnBlock;
-
+    
     void Start()
     {
         Length = 4;
@@ -74,6 +74,7 @@ public class SnakeMovement : MonoBehaviour
             ParticleSystem.Play();
             var audio = GetComponent<AudioSource>();
             audio.PlayOneShot(SoundCollisionOnBlock);
+            Game.Count();
         }
  
         if (Length == 0)
