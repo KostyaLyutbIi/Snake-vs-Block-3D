@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class Game : MonoBehaviour
 {
     public SnakeMovement Controls;
-    public int Points = 0;
+    int _points = 0;
     public GameObject PointsText;
 
     public enum State
@@ -60,7 +60,7 @@ public class Game : MonoBehaviour
 
     public void Count()
     {
-        Points++;
-        PointsText.GetComponent<Text>().text = Points.ToString();
+        _points++;
+        PointsText.GetComponent<Text>().text = _points.ToString();
     }
 }

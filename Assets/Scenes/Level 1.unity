@@ -22202,6 +22202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Controls: {fileID: 2101907233}
+  PointsText: {fileID: 809608248}
 --- !u!1001 &1483488809
 PrefabInstance:
   m_ObjectHideFlags: 0
