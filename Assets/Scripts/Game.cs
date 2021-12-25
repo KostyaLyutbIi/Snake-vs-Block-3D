@@ -1,9 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
     public SnakeMovement Controls;
+    public int Points = 0;
+    public GameObject PointsText;
 
     public enum State
     {
@@ -53,5 +56,11 @@ public class Game : MonoBehaviour
     private void Finish()
     {
         SceneManager.LoadScene(3);
+    }
+
+    public void Count()
+    {
+        Points++;
+        PointsText.GetComponent<Text>().text = Points.ToString();
     }
 }
